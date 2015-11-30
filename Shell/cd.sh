@@ -167,7 +167,7 @@ function cdg {
 	}
 
 	function cdss {
-		cd ~/GitHub/sabayon-scripts
+		cd ~/GitHub/centos-scripts
 	}
 
 	function cdgs {

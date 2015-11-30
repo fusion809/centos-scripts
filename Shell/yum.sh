@@ -6,6 +6,10 @@ function yin {
 	sudo yum install -y $@
 }
 
+function ylin {
+	sudo yum localinstall -y $@
+}
+
 function yrm {
 	sudo yum remove -y $@
 }

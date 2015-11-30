@@ -46,14 +46,14 @@ function pushss {
   push "$1" && gitsh && gitsize
 }
 
-# sabayon-scripts
-  ## Update local sabayon-scripts repo
+# centos-scripts
+  ## Update local centos-scripts repo
   function cps {
-    cp -a ~/Shell/* ~/GitHub/sabayon-scripts/Shell
-    cp -a ~/.bashrc ~/GitHub/sabayon-scripts/
+    cp -a ~/Shell/* ~/GitHub/centos-scripts/Shell
+    cp -a ~/.bashrc ~/GitHub/centos-scripts/
   }
 
-  ## Update sabayon-scripts GitHub repo
+  ## Update centos-scripts GitHub repo
   function shup {
     cps && cdss && push "$1"
   }
