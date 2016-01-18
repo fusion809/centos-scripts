@@ -48,12 +48,3 @@ function edsh {
 
 alias edshell=edsh
 alias shelled=edsh
-
-function edst {
-  atom $GHUB/sabayon-tools
-}
-
-# Defining atom-beta
-function atom-beta {
-  /usr/local/bin/atom
-}
