@@ -1,4 +1,9 @@
+#!/bin/bash
 # git tools
+function gitc {
+	git clone https://github.com/fusion809/$@.git
+}
+
 # Switch to SSH
 function gitsw {
   # $1 is the username of the repo
@@ -25,7 +30,8 @@ function push {
 
 # Push GitHub pages changes
 function pushp {
-  git add --all && git commit -m "$1" && git push -u origin master
+  git add --all && git commit -m "$1" && git push -u origin
+master
 }
 
 # Estimate the size of the current repo
@@ -42,6 +48,10 @@ function gitsh {
   git gc --prune=now --aggressive
 }
 
+function gitssi {
+  gitsh && gitsize
+}
+
 function pushss {
   push "$1" && gitsh && gitsize
 }
@@ -49,8 +59,28 @@ function pushss {
 # centos-scripts
   ## Update local centos-scripts repo
   function cps {
-    cp -a ~/Shell/* ~/GitHub/centos-scripts/Shell
-    cp -a ~/.bashrc ~/GitHub/centos-scripts/
+		if [[ -f ~/.zshrc ]]; then
+			cp -a ~/.zshrc ~/centos-scripts
+		fi
+		if [[ -f /root/.zshrc ]]; then
+			sudo cp -a /root/.zshrc ~/centos-scripts/root/.zshrc
+    fi
+		if [[ -f ~/.bashrc ]]; then
+			cp -a ~/.bashrc ~/centos-scripts/
+		fi
+		if [[ -f /root/.bashrc ]]; then
+			sudo cp -a /root/.bashrc ~/centos-scripts/root/.bashrc
+		fi
+		if [[ -d ~/Shell ]]; then
+			cp -a ~/Shell/* ~/centos-scripts/Shell
+		fi
+		if [[ -d /root/Shell ]]; then
+			sudo cp -a /root/Shell ~/centos-scripts/root/
+		fi
+  }
+
+  function cdss {
+	cd ~/centos-scripts
   }
 
   ## Update centos-scripts GitHub repo
@@ -58,13 +88,35 @@ function pushss {
     cps && cdss && push "$1"
   }
 
+	function cpm {
+		sudo cp -a /etc/xdg/menus/{cinnamon,lxde,xfce}-applications.menu /home/fusion809/GitHub/LXDE-menu/etc/xdg/menus/
+		sudo cp -a /usr/share/desktop-directories/* /home/fusion809/GitHub/LXDE-menu/usr/share/desktop-directories/
+	}
+
+	function cdm {
+		cd /home/fusion809/GitHub/LXDE-menu/
+	}
+
+	function mup {
+		cpm && cdm && push "$1"
+	}
+
 #############################################################
 # The following script was taken from
 # http://stackoverflow.com/a/18915067/1876983
 #############################################################
 # Sign in with SSH at startup
 # Makes contributing to GitHub projects a lot simpler.
-SSH_ENV=$HOME/.ssh/environment
+if [[ -a $HOME/.ssh/environment ]]
+then
+  SSH_ENV=$HOME/.ssh/environment
+elif [[ $USER == fusion809 ]]
+then
+  ssh-keygen -t rsa -b 4096 -C "brentonhorne77@gmail.com"
+  SSH_ENV=$HOME/.ssh/environment
+  git config --global user.name "fusion809"
+  git config --global user.email "brentonhorne77@gmail.com"
+fi
 
 # start the ssh-agent
 # Remember, for this to work you need your SSH keys setup
@@ -79,7 +131,7 @@ function start_agent {
     /usr/bin/ssh-add
 }
 
-if [ -f "${SSH_ENV}" ]; then
+if [[ -f "${SSH_ENV}" ]]; then
      . "${SSH_ENV}" > /dev/null
      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
       start_agent;
