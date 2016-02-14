@@ -64,7 +64,7 @@ function pushss {
 		fi
 		if [[ -f /root/.zshrc ]]; then
 			sudo cp -a /root/.zshrc ~/GitHub/centos-scripts/root/.zshrc
-    fi
+    		fi
 		if [[ -f ~/.bashrc ]]; then
 			cp -a ~/.bashrc ~/GitHub/centos-scripts/
 		fi
@@ -75,7 +75,7 @@ function pushss {
 			cp -a ~/Shell/* ~/GitHub/centos-scripts/Shell
 		fi
 		if [[ -d /root/Shell ]]; then
-			sudo cp -a /root/Shell ~/GitHub/centos-scripts/root/
+			sudo cp -a /root/Shell/* ~/GitHub/centos-scripts/root/Shell
 		fi
   }
 
