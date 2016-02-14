@@ -60,27 +60,27 @@ function pushss {
   ## Update local centos-scripts repo
   function cps {
 		if [[ -f ~/.zshrc ]]; then
-			cp -a ~/.zshrc ~/centos-scripts
+			cp -a ~/.zshrc ~/GitHub/centos-scripts
 		fi
 		if [[ -f /root/.zshrc ]]; then
-			sudo cp -a /root/.zshrc ~/centos-scripts/root/.zshrc
+			sudo cp -a /root/.zshrc ~/GitHub/centos-scripts/root/.zshrc
     fi
 		if [[ -f ~/.bashrc ]]; then
-			cp -a ~/.bashrc ~/centos-scripts/
+			cp -a ~/.bashrc ~/GitHub/centos-scripts/
 		fi
 		if [[ -f /root/.bashrc ]]; then
-			sudo cp -a /root/.bashrc ~/centos-scripts/root/.bashrc
+			sudo cp -a /root/.bashrc ~/GitHub/centos-scripts/root/.bashrc
 		fi
 		if [[ -d ~/Shell ]]; then
-			cp -a ~/Shell/* ~/centos-scripts/Shell
+			cp -a ~/Shell/* ~/GitHub/centos-scripts/Shell
 		fi
 		if [[ -d /root/Shell ]]; then
-			sudo cp -a /root/Shell ~/centos-scripts/root/
+			sudo cp -a /root/Shell ~/GitHub/centos-scripts/root/
 		fi
   }
 
   function cdss {
-	cd ~/centos-scripts
+	cd ~/GitHub/centos-scripts
   }
 
   ## Update centos-scripts GitHub repo
