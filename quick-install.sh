@@ -1,6 +1,6 @@
 #!/bin/bash
-export GHUB=$HOME/GitHub
-export SH=$GHUB/centos-scripts
+export GHUB = $HOME/GitHub
+export SH   = $GHUB/centos-scripts
 if ! [[ -d $GHUB ]]; then
   mkdir $GHUB
 fi
