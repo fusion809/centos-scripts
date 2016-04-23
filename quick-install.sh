@@ -23,9 +23,9 @@ function isinstalled {
 if isinstalled git; then
   git clone $URL $SH
 elif isinstalled curl; then
-  curl -sL $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
+  curl -sL   $URL/archive/master.tar.gz | tar -xz --transform="s/$CS-master/$CS/g" -C $GHUB
 elif isinstalled wget; then
-  wget -cqO- $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
+  wget -cqO- $URL/archive/master.tar.gz | tar -xz --transform="s/$CS-master/$CS/g" -C $GHUB
 fi
 
 # Copy across
