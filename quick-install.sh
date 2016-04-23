@@ -2,6 +2,8 @@
 # Export shell script variables
 export GHUB=$HOME/GitHub
 export SH=$GHUB/centos-scripts
+export CS="${SH##*/}"
+export URL=https://github.com/fusion809/centos-scripts
 
 # Create GHUB directory
 if ! [[ -d $GHUB ]]; then
@@ -19,11 +21,11 @@ function isinstalled {
 
 # Get the source
 if isinstalled git; then
-  git clone https://github.com/fusion809/centos-scripts $SH
+  git clone $URL $SH
 elif isinstalled curl; then
-  curl -sL https://github.com/fusion809/centos-scripts/archive/master.tar.gz | tar -xz --transform=s/centos-scripts-master/centos-scripts
+  curl -sL $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
 elif isinstalled wget; then
-  wget -cqO- https://github.com/fusion809/centos-scripts/archive/master.tar.gz | tar -xz --transform=s/centos-scripts-master/centos-scripts
+  wget -cqO- $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
 fi
 
 # Copy across
