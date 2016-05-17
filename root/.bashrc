@@ -11,7 +11,7 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
-for i in ~/Shell/*.sh
+for i in $HOME/Shell/*.sh
 do
         . "$i"
 done
