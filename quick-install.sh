@@ -1,7 +1,7 @@
 #!/bin/bash
 # Export shell script variables
-export GHUB=$HOME/GitHub
-export SH=$GHUB/centos-scripts
+export GHUB=$GHUB
+export SH=$GHUB/mine/centos-scripts
 export CS="${SH##*/}"
 export URL=https://github.com/fusion809/centos-scripts
 
@@ -10,55 +10,29 @@ if ! [[ -d $GHUB ]]; then
   mkdir $GHUB
 fi
 
-# This function is borrowed from http://unix.stackexchange.com/a/122682/27613
-function isinstalled {
-  if yum list installed "$@" >/dev/null 2>&1; then
-    true
-  else
-    false
-  fi
-}
-
-# Get the source
-if isinstalled git; then
-  git clone $URL $SH
-elif isinstalled curl; then
-  curl -sL $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
-elif isinstalled wget; then
-  wget -cqO- $URL/archive/master.tar.gz | tar -xz --transform=s/$CS-master/$CS -C $GHUB
-fi
-
-# Copy across
-cp -a $SH/{Shell,.*rc} ~/
-sudo cp -a $SH/root/{Shell,.*rc} /root/
-# Create GitHub directory
-if ! [[ -d $HOME/GitHub ]]; then
-  mkdir $HOME/GitHub
-fi
-
 # Get openssh, if not pre-installed and Zsh
 sudo yum install -y git openssh zsh
 
 # Clone centos-scripts repo
-if ! [[ -d $HOME/GitHub/centos-scripts ]] || ! [[ -d $HOME/GitHub/mine/centos-scripts ]]; then
-  git clone https://github.com/fusion809/centos-scripts $HOME/GitHub/mine/centos-scripts
+if ! [[ -d $GHUB/centos-scripts ]] || ! [[ -d $GHUB/mine/centos-scripts ]]; then
+  git clone https://github.com/fusion809/centos-scripts $GHUB/mine/centos-scripts
   # Copy across
-  cp -a $HOME/GitHub/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $HOME/GitHub/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
-elif [[ -d $HOME/GitHub/centos-scripts ]]; then
-  cd $HOME/GitHub/centos-scripts
+  cp -a $GHUB/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
+  sudo cp -a $GHUB/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
+elif [[ -d $GHUB/centos-scripts ]]; then
+  cd $GHUB/centos-scripts
   git pull origin master
   cd -
   # Copy across
-  cp -a $HOME/GitHub/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $HOME/GitHub/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
-elif [[ -d $HOME/GitHub/mine/centos-scripts ]]; then
-  cd $HOME/GitHub/mine/centos-scripts
+  cp -a $GHUB/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
+  sudo cp -a $GHUB/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
+elif [[ -d $GHUB/mine/centos-scripts ]]; then
+  cd $GHUB/mine/centos-scripts
   git pull origin master
   cd -
   # Copy across
-  cp -a $HOME/GitHub/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $HOME/GitHub/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
+  cp -a $GHUB/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
+  sudo cp -a $GHUB/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
 fi
 
 if ! [[ -d $HOME/.oh-my-zsh ]]; then
@@ -70,15 +44,15 @@ else
   cd -
 fi
 
-if ! [[ -d $HOME/GitHub/zsh-theme ]] || ! [[ -d $HOME/GitHub/mine/zsh-theme ]]; then
+if ! [[ -d $GHUB/zsh-theme ]] || ! [[ -d $GHUB/mine/zsh-theme ]]; then
 # Get my self-made zsh-themes
-  git clone https://github.com/fusion809/zsh-theme $HOME/GitHub/mine/zsh-theme
-  cp -a $HOME/GitHub/mine/zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
+  git clone https://github.com/fusion809/zsh-theme $GHUB/mine/zsh-theme
+  cp -a $GHUB/mine/zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
 else
-  cd $HOME/GitHub/{,mine/}zsh-theme
+  cd $GHUB/{,mine/}zsh-theme
   git pull origin master
   cd -
-  cp -a $HOME/GitHub/{,mine/}zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
+  cp -a $GHUB/{,mine/}zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
 fi
 
 if ! [[ -d $HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting ]]; then
