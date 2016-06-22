@@ -1,0 +1,7 @@
+.vscode
+*.gz
+*.xz
+*.lzma
+*.lz4
+*.deb
+*.rpm
