@@ -30,10 +30,6 @@ function nbash {
 	nano $HOME/.bashrc
 }
 
-function nbash {
-	nano $HOME/.bashrc
-}
-
 function gbash {
 	gvim $HOME/.bashrc
         pushd $HOME/Shell
