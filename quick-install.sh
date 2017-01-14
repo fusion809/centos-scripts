@@ -1,7 +1,7 @@
 #!/bin/bash
 # Export shell script variables
 export GHUB=$GHUB
-export SH=$GHUB/mine/centos-scripts
+export SH=$GHUB/mine/scripts/centos-scripts
 export CS="${SH##*/}"
 export URL=https://github.com/fusion809/centos-scripts
 
@@ -14,25 +14,18 @@ fi
 sudo yum install -y git openssh zsh
 
 # Clone centos-scripts repo
-if ! [[ -d $GHUB/centos-scripts ]] || ! [[ -d $GHUB/mine/centos-scripts ]]; then
-  git clone https://github.com/fusion809/centos-scripts $GHUB/mine/centos-scripts
+if ! [[ -d $GHUB/mine/scripts/centos-scripts ]]; then
+  git clone https://github.com/fusion809/centos-scripts $GHUB/mine/scripts/centos-scripts
   # Copy across
-  cp -a $GHUB/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $GHUB/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
-elif [[ -d $GHUB/centos-scripts ]]; then
-  cd $GHUB/centos-scripts
+  cp -a $GHUB/mine/scripts/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
+  sudo cp -a $GHUB/mine/scripts/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
+else
+  cd $GHUB/mine/scripts/centos-scripts
   git pull origin master
   cd -
   # Copy across
-  cp -a $GHUB/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $GHUB/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
-elif [[ -d $GHUB/mine/centos-scripts ]]; then
-  cd $GHUB/mine/centos-scripts
-  git pull origin master
-  cd -
-  # Copy across
-  cp -a $GHUB/mine/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
-  sudo cp -a $GHUB/mine/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
+  cp -a $GHUB/mine/scripts/centos-scripts/{Shell,.bashrc,.zshrc} $HOME/
+  sudo cp -a $GHUB/mine/scripts/centos-scripts/root/{Shell,.bashrc,.zshrc} /root/
 fi
 
 if ! [[ -d $HOME/.oh-my-zsh ]]; then
@@ -44,15 +37,15 @@ else
   cd -
 fi
 
-if ! [[ -d $GHUB/zsh-theme ]] || ! [[ -d $GHUB/mine/zsh-theme ]]; then
+if ! [[ -d $GHUB/mine/scripts/zsh-theme ]]; then
 # Get my self-made zsh-themes
-  git clone https://github.com/fusion809/zsh-theme $GHUB/mine/zsh-theme
-  cp -a $GHUB/mine/zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
+  git clone https://github.com/fusion809/zsh-theme $GHUB/mine/scripts/zsh-theme
+  cp -a $GHUB/mine/scripts/zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
 else
-  cd $GHUB/{,mine/}zsh-theme
+  cd $GHUB/mine/scripts/zsh-theme
   git pull origin master
   cd -
-  cp -a $GHUB/{,mine/}zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
+  cp -a $GHUB/mine/scripts/zsh-theme/*.zsh-theme $HOME/.oh-my-zsh/themes/
 fi
 
 if ! [[ -d $HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting ]]; then
