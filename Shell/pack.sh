@@ -1,3 +1,0 @@
-function pacfix {
-  emrv && seqt
-}
