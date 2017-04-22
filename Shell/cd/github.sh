@@ -15,9 +15,14 @@ function cdvsin {
 	cdgm vscode-installer
 }
 
-function cdss {
-	cdgm centos-scripts
+function cdsc {
+	cdgm "scripts/$1"
 }
+
+function cdss {
+	cdsc centos-scripts
+}
+
 alias cdcs=cdss
 
 function cdfgi {

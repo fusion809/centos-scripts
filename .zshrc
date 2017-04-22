@@ -1,5 +1,5 @@
 #!/bin/zsh
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -51,7 +51,7 @@ ZSH_THEME="hcompact"
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github zsh-syntax-highlighting safe-paste zsh-completions github)
+plugins=(git github zsh-syntax-highlighting safe-paste zsh-completions)
 
 autoload -U compinit && compinit
 source $ZSH/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
