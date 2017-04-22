@@ -7,6 +7,11 @@ function vd {
 function vbash {
         vim $HOME/.bashrc
 }
+
+function vrc {
+	vim $HOME/.vimrc
+}
+
 function vsh {
         vd "$HOME/Shell"
 }
