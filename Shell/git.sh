@@ -66,7 +66,6 @@ function cps {
 	 cp -a $HOME/.zshrc $GHUBM/scripts/centos-scripts
     fi
 
-    mkdir -p $GHUBM/scripts/centos-scripts/root/Shell
     mkdir -p $GHUBM/scripts/centos-scripts/Shell
     if [[ -f /root/.zshrc ]]; then
 	 sudo cp -a /root/.zshrc $GHUBM/scripts/centos-scripts/root/.zshrc
@@ -85,7 +84,7 @@ function cps {
     fi
 
     if [[ -d /root/Shell ]]; then
-	 sudo cp -a /root/Shell/* $GHUBM/scripts/centos-scripts/root/Shell
+	 sudo cp -a /root/Shell $GHUBM/scripts/centos-scripts/root
     fi
 }
 
