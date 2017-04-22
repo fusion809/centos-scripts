@@ -50,7 +50,7 @@ function cdt {
 	cd $HOME/Textbooks
 }
 
-for i in $SHL/02-cd/*.sh
+for i in $SHL/cd/*.sh
 do
 	. "$i"
 done

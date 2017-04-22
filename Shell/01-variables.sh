@@ -1,18 +1,22 @@
+# Dotfiles
 export LS=$HOME/.local/share/
 export IC=$LS/icons
 export AP=$LS/applications
-export DOCK='sudo docker run -ti -v "$PWD"/artifacts:/usr/portage/packages sabayon/builder-amd64'
-export JAVA_HOME=/usr/lib/jvm/oracle-jdk-bin-1.8/bin
-export JEF=https://github.com/JeffHoogland
 
+# GitHub
 export GHUB=$HOME/GitHub
 export GHUBM=$GHUB/mine
-export FGI=$GHUBM/fusion809.github.io
-export PAK=$GHUBM/Packer
-export ST=$GHUBM/sabayon-tools
-export SHL=$HOME/Shell
+export WEB=$GHUBM/websites
+export SCR=$GHUBM/scripts
+export PKG=$GHUBM/packaging
+export FGI=$WEB/fusion809.github.io
+export CS=$SCR/centos-scripts
 
+# Programs
 export PRG=$HOME/Programs
+
+# Shell
+export SHL=$HOME/Shell
 
 export SSH_ASKPASS=/usr/lib64/misc/ssh-askpass
 
