@@ -61,32 +61,14 @@ function pushss {
 function cps {
 
     rm -rf $GHUBM/scripts/centos-scripts/*
-
-    if [[ -f $HOME/.zshrc ]]; then
-	 cp -a $HOME/.zshrc $GHUBM/scripts/centos-scripts
-    fi
-
+    cp -a $HOME/.zshrc $GHUBM/scripts/centos-scripts
     mkdir -p $GHUBM/scripts/centos-scripts/root
     mkdir -p $GHUBM/scripts/centos-scripts/Shell
-    if [[ -f /root/.zshrc ]]; then
-	 sudo cp -a /root/.zshrc $GHUBM/scripts/centos-scripts/root/.zshrc
-    fi
-
-    if [[ -f $HOME/.bashrc ]]; then
-	 cp -a $HOME/.bashrc $GHUBM/scripts/centos-scripts/
-    fi
-
-    if [[ -f /root/.bashrc ]]; then
-         sudo cp -a /root/.bashrc $GHUBM/scripts/centos-scripts/root/.bashrc
-    fi
-
-    if [[ -d $HOME/Shell ]]; then
-	 cp -a $HOME/Shell/* $GHUBM/scripts/centos-scripts/Shell
-    fi
-
-    if [[ -d /root/Shell ]]; then
-	 sudo cp -a /root/Shell $GHUBM/scripts/centos-scripts/root
-    fi
+    sudo cp -a /root/.zshrc $GHUBM/scripts/centos-scripts/root/.zshrc
+    cp -a $HOME/.bashrc $GHUBM/scripts/centos-scripts/
+    sudo cp -a /root/.bashrc $GHUBM/scripts/centos-scripts/root/.bashrc
+    cp -a $HOME/Shell/* $GHUBM/scripts/centos-scripts/Shell
+    sudo cp -a /root/Shell $GHUBM/scripts/centos-scripts/root
 }
 
 function cdss {
