@@ -6,6 +6,9 @@ function yin {
 	sudo yum install -y $@
 }
 
+alias syiy=yin
+alias syi=yin
+
 function ylin {
 	sudo yum localinstall -y $@
 }
