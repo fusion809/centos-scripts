@@ -17,3 +17,10 @@ function yrm {
 function ybd {
 	sudo yum-builddeps $@
 }
+
+function ys {
+	sudo yum search "$@"
+}
+
+alias sys=ys
+
