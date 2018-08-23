@@ -2,6 +2,10 @@ function update {
 	yum update -y
 }
 
+alias yup=update
+alias yuy=update
+alias yupy=update
+
 function yin {
 	yum install -y $@
 }
