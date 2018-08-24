@@ -10,6 +10,8 @@ function yin {
 	yum install -y $@
 }
 
+alias yiy=yin
+
 function yrin {
 	yum reinstall -y $@
 }
