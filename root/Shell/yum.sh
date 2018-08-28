@@ -7,19 +7,23 @@ alias yuy=update
 alias yupy=update
 
 function yin {
-	yum install -y $@
+	yum install -y "$@"
 }
 
 alias yiy=yin
 
 function yrin {
-	yum reinstall -y $@
+	yum reinstall -y "$@"
 }
 
 function yrm {
-	yum remove -y $@
+	yum remove -y "$@"
 }
 
 function ylin {
-	yum localinstall -y $@
+	yum localinstall -y "$@"
+}
+
+function ys {
+	yum search "$@"
 }
